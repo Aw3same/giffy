@@ -1,0 +1,34 @@
+.App {
+  text-align: center;
+}
+
+
+.App-content {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 16px;
+}
+
+.App-logo {
+  margin: 10px auto;
+  padding: 20px 0;
+  width: 144px;
+}
+
+.App-logo img {
+  object-fit: cover;
+  width: 100%;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.App-title {
+  color: var(--theme-body-txt);
+  margin-top: 0.6rem;
+}
