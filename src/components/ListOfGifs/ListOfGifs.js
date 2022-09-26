@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import getGifs from '../../services/getGifs'
 import Gif from '../Gif/Gif'
-// import './ListOfGifs.css'
+import './ListOfGifs.css'
 
 export default function ListOfGifs({ keyword }) { 
   const [loading, setLoading] = useState(false)
