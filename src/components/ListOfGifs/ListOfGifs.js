@@ -1,21 +1,7 @@
-import { useEffect, useState } from 'react'
-import getGifs from '../../services/getGifs'
 import Gif from '../Gif/Gif'
 import './ListOfGifs.css'
 
-export default function ListOfGifs({ keyword }) { 
-  const [loading, setLoading] = useState(false)
-  const [gifs, setGifs] = useState([])
-
-  useEffect(() => {
-    setLoading(true)
-    getGifs({ keyword }).then(gifs => {
-      setGifs(gifs)
-      setLoading(false)
-    })
-  }, [keyword])
-
-  if (loading) return <p> LOADING</p>
+export default function ListOfGifs({ gifs }) { 
   return (
     <div className='ListOfGifs'>
       {gifs.map(({ id, title, url }) => (
