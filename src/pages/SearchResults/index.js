@@ -1,6 +1,6 @@
-import ListOfGifs from '../../components/ListOfGifs/ListOfGifs'
-import Spinner from '../../components/Spinner'
-import { useGifs } from '../../hooks/useGifs'
+import ListOfGifs from 'components/ListOfGifs/ListOfGifs'
+import Spinner from 'components/Spinner'
+import { useGifs } from 'hooks/useGifs'
 
 export default function SearchResults({ params }) {
   const { keyword } = params
@@ -12,7 +12,7 @@ export default function SearchResults({ params }) {
         <Spinner />
       ) : (
         <>
-          <h3 className='App-title'>{keyword}</h3>
+          <h3 className='App-title'>{decodeURI(keyword)}</h3>
           <ListOfGifs gifs={gifs} />
         </>
       )}
