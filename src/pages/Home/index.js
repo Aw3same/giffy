@@ -1,39 +1,49 @@
 import { useState } from 'react'
-import { Link, useLocation } from 'wouter'
+import { useLocation } from 'wouter'
 import ListOfGifs from '../../components/ListOfGifs/ListOfGifs'
+import Category from '../../components/Category'
 import { useGifs } from '../../hooks/useGifs'
 
 const POPULAR_GIFS = ['luffy', 'zoro', 'nami', 'kaido']
 
-export default function Home() {
-  const [keyword, SetKeyword] = useState('')
-  const [path, pushLocation] = useLocation('')
 
+export default function Home() {
+  const [keyword, setKeyword] = useState('')
+  const [path, pushLocation] = useLocation()
   const {loading, gifs} = useGifs()
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    pushLocation(`search/${keyword}`)
+    // navegar a otra ruta
+    pushLocation(`/search/${keyword}`)
   }
 
   const handleChange = evt => {
-    SetKeyword(evt.target.value)
+    setKeyword(evt.target.value)
   }
+
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input placeholder='Search a Gif here...' onChange={handleChange} type='text' value={keyword} />
+        <button>Buscar</button>        
+        <input placeholder="Search a gif here..." onChange={handleChange} type='text' value={keyword} />
       </form>
-      <h3 className='App-title'> Última búsqueda</h3>
-      <ListOfGifs gifs={gifs} />
-      <h3 className='App-title'> Los gifs más populares</h3>
-      <ul>
-        {POPULAR_GIFS.map(gif => (
-          <li key={gif}>
-            <Link to={`search/${gif}`}>Gifs de {gif}</Link>
-          </li>
-        ))}
-      </ul>
+      <div className="App-main">
+        <div className="App-results">
+          <h3 className="App-title">Última búsqueda</h3>
+          <ListOfGifs gifs={gifs} />
+        </div>
+        <div className="App-category">
+          <Category
+            name="Categorias populares"
+            options={POPULAR_GIFS}
+          />
+          <Category
+            name="Mascotas"
+            options={['Perros', 'Gatos', 'Hamster']}
+          />
+        </div>
+      </div>
     </>
   )
 }
