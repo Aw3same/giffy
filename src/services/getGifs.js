@@ -14,7 +14,7 @@ const fromApiResponseToGifs = apiResponse => {
 }
 
 export default function getGifs({
-  limit = 5,
+  limit = 15,
   rating = 'g',
   page = 0,
   keyword = 'luffy',

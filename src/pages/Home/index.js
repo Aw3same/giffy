@@ -4,12 +4,10 @@ import ListOfGifs from 'components/ListOfGifs/ListOfGifs'
 import { useGifs } from 'hooks/useGifs'
 import TrendingSearches from 'components/TrendingSearches'
 
-
-
 export default function Home() {
   const [keyword, setKeyword] = useState('')
   const [path, pushLocation] = useLocation()
-  const {loading, gifs} = useGifs()
+  const { loading, gifs } = useGifs()
 
   const handleSubmit = evt => {
     evt.preventDefault()
@@ -24,16 +22,23 @@ export default function Home() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <button>Buscar</button>        
-        <input placeholder="Search a gif here..." onChange={handleChange} type='text' value={keyword} />
+        <button>Buscar</button>
+        <input
+          placeholder='Search a gif here...'
+          onChange={handleChange}
+          type='text'
+          value={keyword}
+        />
       </form>
-      <div className="App-main">
-        <div className="App-results">
-          <h3 className="App-title">Última búsqueda</h3>
-          <ListOfGifs gifs={gifs} />
-        </div>
-        <div className="App-category">
-          <TrendingSearches />
+      <div className=''>
+        <div className='App-main'>
+          <div className='App-results'>
+            <h3 className='App-title'>Última búsqueda</h3>
+            <ListOfGifs gifs={gifs} />
+          </div>
+          <div className='App-category'>
+            <TrendingSearches />
+          </div>
         </div>
       </div>
     </>
