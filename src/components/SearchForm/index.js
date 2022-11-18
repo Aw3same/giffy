@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 
-export default function SearchForm({ onSubmit }) {
+function SearchForm({ onSubmit }) {
   const [keyword, setKeyword] = useState('')
 
   const handleSubmit = evt => {
@@ -25,3 +25,6 @@ export default function SearchForm({ onSubmit }) {
     </form>
   )
 }
+
+
+export default memo(SearchForm)

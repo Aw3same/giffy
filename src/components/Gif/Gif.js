@@ -1,8 +1,8 @@
-import React from 'react'
+import { memo } from 'react'
 import {Link} from 'wouter'
 import './Gif.css'
 
-export default function Gif ({ title, id, url }) {
+function Gif ({ title, id, url }) {
   return (
     <div className="Gif">
       <Link to={`/gif/${id}`} className='Gif-link'>
@@ -13,3 +13,10 @@ export default function Gif ({ title, id, url }) {
 
   )
 }
+
+
+export default memo(Gif, (prevProps, nextProps) => {
+  return false //areEqual(prevProps, nextProps)
+})
+
+//mi 58

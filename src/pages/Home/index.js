@@ -3,14 +3,15 @@ import ListOfGifs from 'components/ListOfGifs/ListOfGifs'
 import { useGifs } from 'hooks/useGifs'
 import TrendingSearches from 'components/TrendingSearches'
 import SearchForm from 'components/SearchForm'
+import { useCallback } from 'react'
 
 export default function Home() {
   const [path, pushLocation] = useLocation()
   const { loading, gifs } = useGifs()
 
-  const handleSubmit = ({ keyword }) => {
+  const handleSubmit = useCallback(({ keyword }) => {
     pushLocation(`/search/${keyword}`)
-  }
+  }, [pushLocation])
 
   return (
     <>
