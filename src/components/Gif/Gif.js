@@ -16,7 +16,5 @@ function Gif ({ title, id, url }) {
 
 
 export default memo(Gif, (prevProps, nextProps) => {
-  return false //areEqual(prevProps, nextProps)
+  return prevProps.id === nextProps.id
 })
-
-//mi 58
